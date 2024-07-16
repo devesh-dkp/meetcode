@@ -35,6 +35,7 @@ const Login = () => {
 
           const json = await response.json();
           localStorage.setItem("token", json.token);
+          window.location.href = "/";
         }}>Login</button>
       </div>
     </div>

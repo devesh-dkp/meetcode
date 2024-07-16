@@ -1,9 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react";
 
-import './Navbar.css'
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handlelogout = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+  };
   return (
     <div id="navbar-main" className="flex-row">
       <Link to={"/"}>
@@ -22,11 +35,19 @@ const Navbar = () => {
       <div className="nav-options">
         <Link to={"/signup"}>Signup</Link>
       </div>
-      <div className="nav-options">
-        <Link to={"/login"}>Login</Link>
-      </div>
+      {loggedIn ? (
+        <div className="nav-options">
+          <Link to={"/"} onClick={handlelogout}>
+            Logout
+          </Link>
+        </div>
+      ) : (
+        <div className="nav-options">
+          <Link to={"/login"}>Login</Link>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Navbar
