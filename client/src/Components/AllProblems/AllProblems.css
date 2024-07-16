@@ -23,6 +23,13 @@ td {
     padding: 1rem;
 }
 
+.title {
+    color: rgb(0, 0, 156);
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
 .Easy {
     color: green;
     font-weight: 900;

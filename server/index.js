@@ -90,6 +90,16 @@ const PROBLEMS = [
     exampleIn: "list: 1->2->3 , k=2",
     exampleOut: "1->3",
   },
+  {
+    problemId: "9",
+    title: "209. Minimum Size Subarray Sum",
+    difficulty: "Medium",
+    acceptance: "35%",
+    description:
+      "Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target.",
+    exampleIn: "target = 7, nums = [2,3,1,2,4,3]",
+    exampleOut: "2",
+  },
 ];
 
 const SUBMISSIONS = [];

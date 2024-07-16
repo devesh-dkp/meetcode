@@ -1,17 +1,32 @@
 .blog-box {
     border: 1px solid grey;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
 }
+
+.blog-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .date {
-    font-weight: 100;
-    font-size: 0.7rem;
-    margin: 0;
+    font-size: 0.8rem;
+    color: #555;
 }
 
 .title {
-    margin: 10px 0;
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: black;
 }
 
 .content {
     margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
 }

@@ -1,0 +1,30 @@
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 10rem;
+}
+
+.footer-options {
+    display: flex;
+    margin-left: 10rem;
+}
+
+.footer-options a {
+    color: black;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.footer-options a:hover {
+    color: #007bff;
+}
+
+.footer-main {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* horizontal line  */
+    border-top:1px solid black;
+    margin-top: 5rem;
+}
