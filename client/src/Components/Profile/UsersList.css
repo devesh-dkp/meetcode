@@ -1,0 +1,39 @@
+.users-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .user > div {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .header {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+  
+  .action {
+    text-align: left;
+  }
+  
+  .action button {
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left:0;
+  }
+  .action button:hover {
+    background-color: #cc0000;
+  }
+  

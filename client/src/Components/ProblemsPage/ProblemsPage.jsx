@@ -25,7 +25,6 @@ const ProblemsPage = () => {
   useEffect(() => {
     init();
   }, []);
-  // console.log(cleanId) ;
 
   const handleKey = (event) => {
     if (event.key == "Tab") {
@@ -48,6 +47,23 @@ const ProblemsPage = () => {
     }
   }, 2000);
 
+  const handleSubmission = async () => {
+    const response = await fetch(`${backendUrl}/submission`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        problemId: cleanId,
+        submission: submission,
+      }),
+    });
+
+    const json = await response.json();
+    console.log(json);
+  };
+
   return (
     <div>
       {problem ? (
@@ -67,25 +83,7 @@ const ProblemsPage = () => {
                 name="SolvedCode"
                 onKeyDown={(event) => handleKey(event)}
               ></textarea>
-              <button
-                type="submit"
-                id="submit"
-                onClick={async () => {
-                  const response = await fetch(`${backendUrl}/submission`, {
-                    method: "POST",
-                    headers: {
-                      authorization: localStorage.getItem("token"),
-                    },
-                    body: JSON.stringify({
-                      problemId: cleanId,
-                      submission: submission,
-                    }),
-                  });
-
-                  const json = await response.json();
-                  console.log(json);
-                }}
-              >
+              <button type="submit" id="submit" onClick={handleSubmission}>
                 SubmitCode
               </button>
             </div>

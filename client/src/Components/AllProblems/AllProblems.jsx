@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
 
-import "./AllProblems.css"
+import "./AllProblems.css";
 import { backendUrl } from "../../constants.js";
 import Footer from "../../Constants/Footer/Footer.jsx";
 
@@ -33,7 +32,6 @@ const AllProblemsPage = () => {
 
           {problems.map((prob, index) => (
             <tr key={index}>
-              {/* <Link to={`/problems/:${prob.problemId}`}> */}
               <td
                 className="title"
                 onClick={() => {
@@ -54,4 +52,4 @@ const AllProblemsPage = () => {
   );
 };
 
-export default AllProblemsPage
+export default AllProblemsPage;

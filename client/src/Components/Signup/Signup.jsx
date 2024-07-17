@@ -5,47 +5,81 @@ import { backendUrl } from "../../constants.js";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   return (
-    <div id='signup' className='flex-col'>
+    <div id="signup" className="flex-col">
       <h1>Signup</h1>
-      <div className='signup-form'>
-        <div className='subform'>
-          <label htmlFor='email'>Email: </label>
+      <div className="signup-form">
+        <div className="subform">
+          <label id="username">Username: </label>
+          <input
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            type="text"
+            name="username"
+            placeholder="Your Username"
+            autoComplete="username"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                document.getElementsByName("email")[0].focus();
+              }
+            }}
+          />
+        </div>
+
+        <div className="subform">
+          <label id="email">Email: </label>
           <input
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            type='text'
-            name='email'
-            placeholder='Your Email'
+            type="text"
+            autoComplete="email"
+            name="email"
+            placeholder="Your Email"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                document.getElementsByName("password")[0].focus();
+              }
+            }}
           />
         </div>
 
-        <div className='subform'>
-          <label htmlFor='password'>Password: </label>
+        <div className="subform">
+          <label id="password">Password: </label>
           <input
             onChange={(e) => setPassword(e.target.value)}
-            type='password'
-            name='password'
-            placeholder='Your Password'
+            type="password"
+            autoComplete="current-password"
+            name="password"
+            placeholder="Your Password"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                document.getElementById("test").click();
+              }
+            }}
           />
         </div>
 
         <button
-          type='submit'
-          id='test'
-          onClick={async (e) => {
+          type="submit"
+          id="test"
+          onClick={async () => {
             const response = await fetch(`${backendUrl}/signup`, {
               method: "POST",
-              body: JSON.stringify({
-                email: email,
-                password: password,
-              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password, username }),
             });
 
-            const json = await response.json();
-            console.log(json);
+            if (response.ok) {
+              window.location.href = "/login";
+            } else {
+              alert("Signup failed");
+            }
           }}
         >
           SIGNUP

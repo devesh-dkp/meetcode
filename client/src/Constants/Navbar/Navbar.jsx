@@ -12,11 +12,6 @@ const Navbar = () => {
       setLoggedIn(true);
     }
   }, []);
-
-  const handlelogout = () => {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-  };
   return (
     <div id="navbar-main" className="flex-row">
       <Link to={"/"}>
@@ -33,13 +28,14 @@ const Navbar = () => {
         <Link to={"/problemset/all/"}>Problems</Link>
       </div>
       <div className="nav-options">
-        <Link to={"/signup"}>Signup</Link>
+        <Link to={"/users"}>Users</Link>
       </div>
+      {/* <div className="nav-options">
+        <Link to={"/signup"}>Signup</Link>
+      </div> */}
       {loggedIn ? (
         <div className="nav-options">
-          <Link to={"/"} onClick={handlelogout}>
-            Logout
-          </Link>
+          <Link to={"/me"}>Profile</Link>
         </div>
       ) : (
         <div className="nav-options">

@@ -1,17 +1,19 @@
 const express = require("express");
-const app = express();
-const port = 3000;
-var jwt = require("jsonwebtoken");
-const { auth } = require("./middleware");
-let USER_ID_COUNTER = 1;
-const USERS = [];
-const JWT_SECRET = "secret";
+const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-var jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const cors = require("cors");
+const { auth, adminAuth } = require("./middleware");
+const app = express();
+
+const port = 3000;
+const USERS = require("./users");
+let USER_ID_COUNTER = 5;
+const JWT_SECRET = "secret"; // Ensure this is secure in production
+
+// Middleware setup
 app.use(cors());
-app.use(jsonParser);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const PROBLEMS = [
   {
@@ -137,11 +139,6 @@ app.get("/problem/:id", (req, res) => {
   });
 });
 
-app.get("/me", auth, (req, res) => {
-  const user = USERS.find((x) => x.id === req.userId);
-  res.json({ email: user.email, id: user.id });
-});
-
 app.get("/submissions/:problemId", auth, (req, res) => {
   const problemId = req.params.problemId;
   const submissions = SUBMISSIONS.filter(
@@ -181,27 +178,34 @@ app.post("/submission", auth, (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  if (USERS.find((x) => x.email === email)) {
+  const { email, password, username } = req.body;
+
+  if (!email || !password || !username) {
+    return res.status(400).json({ msg: "Missing required fields" });
+  }
+
+  if (USERS.find((user) => user.email === email)) {
     return res.status(403).json({ msg: "Email already exists" });
   }
 
   USERS.push({
     email,
     password,
-    id: USER_ID_COUNTER++,
+    username,
+    id: email + USER_ID_COUNTER++ + username,
+    role: "user",
   });
-
-  return res.json({
-    msg: "Success",
-  });
+  return res.json({ msg: "Success" });
 });
 
 app.post("/login", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const user = USERS.find((x) => x.email === email);
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ msg: "Missing required fields" });
+  }
+
+  const user = USERS.find((user) => user.email === email);
 
   if (!user) {
     return res.status(403).json({ msg: "User not found" });
@@ -211,14 +215,32 @@ app.post("/login", (req, res) => {
     return res.status(403).json({ msg: "Incorrect password" });
   }
 
-  const token = jwt.sign(
-    {
-      id: user.id,
-    },
-    JWT_SECRET
-  );
-
+  const token = jwt.sign({ id: user.id }, JWT_SECRET);
   return res.json({ token });
+});
+
+app.get("/me", auth, (req, res) => {
+  const user = USERS.find((user) => user.id === req.user.id);
+  if (!user) {
+    return res.status(404).json({ msg: "User not found" });
+  }
+  return res.json({ user });
+});
+
+// New route to list all users
+app.get("/users", (req, res) => {
+  return res.json({ users: USERS });
+});
+
+// New route to delete a user
+app.delete("/users/:id", adminAuth, (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = USERS.findIndex((user) => user.id === id);
+  if (index === -1) {
+    return res.status(404).json({ msg: "User not found" });
+  }
+  USERS.splice(index, 1);
+  return res.json({ msg: "User deleted" });
 });
 
 app.listen(port, () => {

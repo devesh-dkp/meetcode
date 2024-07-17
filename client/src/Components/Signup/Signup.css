@@ -1,40 +1,78 @@
 #signup {
+    padding-right: 55px;
+    padding-left: 35px;
+    padding-top: 35px;
+    padding-bottom: 55px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}
-
-.subform {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem;
-    padding: 1rem 2rem 1rem 2rem;
+    position: relative;
+    margin: 50px auto; /* Center the form vertically */
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.signup-form {
+    }
+  
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .signup-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.subform > input {
-    margin: 0.5rem;
-    padding: 0.5rem;
     width: 100%;
+  }
+  
+  .subform {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    border-radius: 3px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 5px;
+    }
+  
+  .signup-button { /* Renamed for clarity */
+    background-color: #3498db; /* Blue button */
+    color: #fff; /* White text */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer; /* Indicate clickable element */
+    margin-top: 15px;
+  }
+  
+  .signup-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+  
+  /* Media Queries for Mobile Responsiveness (up to 768px) */
+  @media (max-width: 768px) {
+    #signup {
+      padding: 15px;
+    }
+  
+    input[type="text"],
+    input[type="password"] {
+      font-size: 14px;
+    }
+  
+    .signup-button {
+      font-size: 14px;
+    }
+  }
+  
