@@ -15,7 +15,10 @@
 }
 
 .code-form {
-    height: 70vh;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 textarea , pre {
@@ -40,4 +43,24 @@ button {
 }
 #submit {
     background-color: rgb(68, 207, 68);
+}
+
+.ques {
+    border-right: 1px solid #ccc;
+    justify-content: left;
+    text-align: left;
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.code-header h2 {
+    margin: 1rem 2rem 0 0;
+}
+
+.status {
+    margin: 1rem 0;
 }

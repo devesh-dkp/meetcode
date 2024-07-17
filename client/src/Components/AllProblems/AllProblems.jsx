@@ -42,7 +42,7 @@ const AllProblemsPage = () => {
               </td>
               {/* </Link> */}
               <td className={`${prob.difficulty}`}>{prob.difficulty}</td>
-              <td className={`${prob.difficulty}`}>{prob.acceptance}</td>
+              <td className={`${prob.acceptance}`}>{prob.acceptance}</td>
             </tr>
           ))}
         </tbody>

@@ -5,3 +5,16 @@
 .nav-options {
     margin-right: 2rem;
 }
+
+#navbar-main {
+    display: flex;
+    justify-content:left;
+    align-items: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    justify-content: left;
+}

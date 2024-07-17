@@ -34,11 +34,11 @@ const Navbar = () => {
         <Link to={"/signup"}>Signup</Link>
       </div> */}
       {loggedIn ? (
-        <div className="nav-options">
+        <div className="nav-options login">
           <Link to={"/me"}>Profile</Link>
         </div>
       ) : (
-        <div className="nav-options">
+        <div className="nav-options login">
           <Link to={"/login"}>Login</Link>
         </div>
       )}
