@@ -1,81 +1,87 @@
 /* Basic styles */
 #footer {
-    border-top: 1px solid rgb(77, 76, 76);
-    width: 100%;
-    justify-content: space-between;
-    background-color: #f0f0f0;
-    margin: 10rem 0 0 0;
-  }
-  
+  border-top: 1px solid rgb(77, 76, 76);
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #333; /* Dark text color */
+  padding: 20px 0; /* Add some padding */
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between; /* Distribute items horizontally */
+  align-items: center; /* Vertically center items */
+  max-width: 1200px; /* Limit width */
+  margin: 0 auto; /* Center the footer content */
+  padding: 0 20px; /* Add horizontal padding */
+}
+
+.footer-logo,
+.footer-options {
+  flex: 1; /* Equal width */
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: flex-start; /* Align left */
+  align-items: center; /* Vertically center */
+}
+
+.footer-options {
+  display: flex;
+  justify-content: flex-end; /* Align right */
+  align-items: center; /* Vertically center */
+}
+
+.footer-logo p {
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 0; /* Remove margin */
+}
+
+.footer-options a {
+  color: #333; /* Darker text color */
+  text-decoration: none; /* Remove underline */
+  margin-left: 10px; /* Add space between links */
+  font-size: 16px; /* Set font size */
+}
+
+.footer-options a:hover {
+  color: #007bff; /* Blue on hover */
+}
+
+/* Mobile responsiveness (up to 768px) */
+@media (max-width: 768px) {
   .footer-main {
-    display: flex;
-    justify-content: space-between; /* Distribute items horizontally */
-    margin-right: 20px;
-  }
-  
-  .footer-logo,
-  .footer-options {
-    flex: 1; /* Equal width */
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center text */
   }
 
-  .footer-logo{
-    display: flex;
-    justify-content: left;
-    align-items: left;
+  .footer-logo,
+  .footer-options {
+    margin: 10px 0; /* Add margin between sections */
   }
-  
-  .footer-options{
-    display: flex;
-    justify-content: right;
-    align-items: right;
-  }
+
   .footer-logo p {
-    font-size: 18px;
-    font-weight: lighter;
-    }
-  
+    font-size: 16px;
+  }
+
   .footer-options a {
-    color: #333; /* Darker text color */
-    text-decoration: none; /* Remove underline */
-    margin-right: 10px;
+    font-size: 14px;
   }
-  
-  .footer-options a:hover {
-    color: #007bff; /* Blue on hover */
+}
+
+/* Laptop responsiveness (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #footer {
+    padding: 15px;
   }
-  
-  /* Mobile responsiveness (up to 768px) */
-  @media (max-width: 768px) {
-    #footer {
-      padding: 10px;
-    }
-  
-    .footer-logo,
-    .footer-options {
-      flex: unset; /* Don't force equal width on mobile */
-    }
-  
-    .footer-logo p {
-      font-size: 14px;
-    }
-  
-    .footer-options a {
-      font-size: 12px;
-    }
+
+  .footer-logo p {
+    font-size: 16px;
   }
-  
-  /* Laptop responsiveness (768px to 1024px) */
-  @media (min-width: 768px) and (max-width: 1024px) {
-    #footer {
-      padding: 15px;
-    }
-  
-    .footer-logo p {
-      font-size: 16px;
-    }
-  
-    .footer-options a {
-      font-size: 14px;
-    }
+
+  .footer-options a {
+    font-size: 14px;
   }
-  
+}

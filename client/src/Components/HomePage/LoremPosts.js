@@ -1,39 +1,28 @@
 const loremContent = [
-    {
-        title : "Why use C++",
-        date : "10 July 2023",
-        content : "C++ is very fast"
-    },
-    {
-        title : "Why use C++",
-        date : "10 July 2023",
-        content : "C++ is very fast"
-    },
-    {
-        title : "Why use C++ users hate Java",
-        date : "2 July 2023",
-        content : "Java is very verbose"
-    },
-    {
-        title : "Why Java is better than C++",
-        date : "5 March 2023",
-        content : "No Pointers and cross platforms"
-    },
-    {
-        title : "Why Ai will take your job",
-        date : "1 March 2023",
-        content : "Because Ai can do alot of automation, that required humans"
-    },
-    {
-        title : "What jobs will Ai Create",
-        date : "28 Feb 2023",
-        content : "Ai and Ml engineering jobs"
-    },
-    {
-        title : "Is Python the real chad or Javascript",
-        date : "15 Feb 2023",
-        content : "Its like asking is IronMan better than Thor or Captain America"
-    },
-]
+  {
+    date: "July 5, 2024",
+    title: "React Hooks: A Deep Dive",
+    content:
+      "In this blog post, we explore the fundamentals of React hooks, including useState, useEffect, useContext, and custom hooks. Learn how hooks revolutionized state management and side effects in React applications.",
+  },
+  {
+    date: "July 10, 2024",
+    title: "JavaScript ES6 Features You Should Know",
+    content:
+      "ECMAScript 6, also known as ES6 or ECMAScript 2015, introduced significant enhancements to JavaScript syntax and capabilities. Discover the key features such as arrow functions, template literals, destructuring, and more.",
+  },
+  {
+    date: "July 15, 2024",
+    title: "CSS Grid Layout Explained",
+    content:
+      "CSS Grid Layout is a powerful tool for creating complex layouts with ease. This blog post covers the basics of CSS Grid, including grid containers, grid items, grid lines, and alignment techniques.",
+  },
+  {
+    date: "July 20, 2024",
+    title: "Introduction to Node.js and Express",
+    content:
+      "Node.js and Express.js are popular frameworks for building scalable and efficient web applications. Learn how to set up a basic server with Node.js and create RESTful APIs using Express.",
+  },
+];
 
-export default loremContent;
+export default loremContent;  
