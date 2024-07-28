@@ -2,28 +2,26 @@
 #footer {
   border-top: 1px solid rgb(77, 76, 76);
   width: 100%;
-  background-color: #f9f9f9;
   color: #333; /* Dark text color */
-  padding: 20px 0; /* Add some padding */
+  padding: 20px 0;
+  margin-top: 5rem;
+  justify-content: space-between;
 }
 
 .footer-main {
   display: flex;
-  justify-content: space-between; /* Distribute items horizontally */
-  align-items: center; /* Vertically center items */
-  max-width: 1200px; /* Limit width */
+  align-items: center;
+  justify-content: center;
   margin: 0 auto; /* Center the footer content */
-  padding: 0 20px; /* Add horizontal padding */
 }
 
 .footer-logo,
 .footer-options {
-  flex: 1; /* Equal width */
+  margin: 0 20px; /* Add space between sections */
 }
 
 .footer-logo {
   display: flex;
-  justify-content: flex-start; /* Align left */
   align-items: center; /* Vertically center */
 }
 
@@ -34,7 +32,7 @@
 }
 
 .footer-logo p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: lighter;
   margin: 0; /* Remove margin */
 }
@@ -54,31 +52,30 @@
 @media (max-width: 768px) {
   .footer-main {
     flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center text */
   }
 
   .footer-logo,
   .footer-options {
-    margin: 10px 0; /* Add margin between sections */
+    margin:  0; /* Add margin between sections */
   }
 
   .footer-logo p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .footer-options a {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 /* Laptop responsiveness (768px to 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   #footer {
-    padding: 15px;
+    padding: 10px 0; /* Reduce padding */
   }
 
   .footer-logo p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .footer-options a {

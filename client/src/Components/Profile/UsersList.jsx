@@ -34,10 +34,11 @@ function UsersList() {
     fetchUsers();
   }, []);
   const handleDeleteUser = (userId) => {
-    fetch(`${backendUrl}/users/${userId}`, {
+    const token = localStorage.getItem("token");
+    fetch(`${backendUrl}/user/${userId}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${token}`,
       },
     }).then((response) => {
       if (response.ok) {
@@ -47,7 +48,6 @@ function UsersList() {
       }
     });
   };
-
   return (
     <div>
       <h1>Users List</h1>
@@ -67,9 +67,11 @@ function UsersList() {
             <div>{user.role}</div>
             {isAdmin && (
               <div className="action">
-                <button onClick={() => handleDeleteUser(user.id)}>
-                  Delete
-                </button>
+                {user.role !== "admin" && (
+                  <button onClick={() => handleDeleteUser(user.id)}>
+                    Delete
+                  </button>
+                )}
               </div>
             )}
           </li>

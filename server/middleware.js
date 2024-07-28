@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "secret"; // Ensure this is secure in production
-const USERS = require("./users");
+const USERS = require("./models/user");
 
 const auth = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];

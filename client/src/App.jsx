@@ -13,8 +13,35 @@ import UsersList from "./Components/Profile/UsersList";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [idleTimeout, setIdleTimeout] = useState(null);
+
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    const resetTimer = () => {
+      clearTimeout(idleTimeout);
+      setIdleTimeout(
+        setTimeout(() => {
+          // Perform logout actions
+          localStorage.removeItem("token");
+          setLoggedIn(false);
+        }, 86400000)
+      ); // 1 day
+    };
+
+    window.addEventListener("mousemove", resetTimer);
+    window.addEventListener("keypress", resetTimer);
+    window.addEventListener("scroll", resetTimer);
+
+    return () => {
+      window.removeEventListener("mousemove", resetTimer);
+      window.removeEventListener("keypress", resetTimer);
+      window.removeEventListener("scroll", resetTimer);
+      clearTimeout(idleTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
       setLoggedIn(true);
     }
   }, []);

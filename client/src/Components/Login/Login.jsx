@@ -1,10 +1,11 @@
 import React from 'react'
-
-import "./Login.css"
-import {useState} from "react";
-import {backendUrl} from "../../constants.js";
+import { useToast } from "@chakra-ui/react";
+import "./Login.css";
+import { useState } from "react";
+import { backendUrl } from "../../constants.js";
 
 const Login = () => {
+  const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,12 +24,29 @@ const Login = () => {
       localStorage.setItem("token", token);
       window.location.href = "/me";
     } else {
-      console.log("Login failed");
-      window.alert("No user found with that email and password");
+      toast({
+        title: "Login failed",
+        description: "Invalid email or password",
+        status: "error",
+        duration: 6000,
+        isClosable: true,
+      });
     }
   };
 
   const gotoPassword = (e) => {
+    if (email === "") {
+      toast({
+        title: "Email is empty",
+        description: "Please enter your email",
+        status: "error",
+        duration: 6000,
+        isClosable: true,
+      });
+      document.getElementsByName("email")[0].focus();
+      return;
+    }
+    e.preventDefault();
     document.getElementsByName("password")[0].focus();
   };
   return (
@@ -87,6 +105,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login ;

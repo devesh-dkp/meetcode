@@ -1,44 +1,64 @@
-table {
-    margin-top: 2rem;
-    width: 95%;
-    border-collapse: collapse;
-}
+/* allproblems.css */
 
-
-tr {
-    color: rgb(0, 0, 156);
-    border: 2px solid grey;
-}
-
-th {
-    border: 2px solid black;
-    text-align: start;
-    padding: 0.5rem 0 0.5rem 0.3rem;
-    color: black;
-    font-family: 'Merriweather', serif;
-}
-
-td {
-    font-family: 'Merriweather', serif;
-    padding: 1rem;
-}
-
-.title {
-    color: rgb(0, 0, 156);
-    margin-top: 2rem;
-    margin-left: 2rem;
-    cursor: pointer;
-}
-
-.Easy {
-    color: green;
-    font-weight: 900;
-}
-.Medium {
-    color: rgb(255, 166, 0);
-    font-weight: 900;
-}
-.Hard {
-    color: red;
-    font-weight: 900;
-}
+#allproblems {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif; 
+    border: 1px solid #e0e0e0;
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    margin-top: 1rem; 
+    }
+  
+  #allproblems table {
+    width: 100%;
+    border-collapse: collapse; /* Remove borders between cells for a cleaner look */
+  }
+  
+  #allproblems table th,
+  #allproblems table td {
+    padding: 15px; /* Consistent padding for readability */
+    text-align: left; /* Align content to the left (default) */
+  }
+  
+  #allproblems table th {
+    font-weight: bold; /* Bold text for emphasis */
+  }
+  
+  #allproblems table tr:nth-child(even) {
+    background-color: #eee; /* Alternate row colors for better readability */
+  }
+  
+  .title {
+    cursor: pointer; /* Indicate clickable titles with cursor change */
+  }
+  
+  .title:hover {
+    color: #007bff; /* Change title color on hover (optional) */
+  }
+  
+  .Easy,
+  .Medium,
+  .Hard {
+    /* Customize difficulty cell styles based on your preference */
+    color: #333; /* Example: Adjust text color */
+    font-weight: bold; /* Example: Set bold text */
+  }
+  
+  .Accepted,
+  .Partially Accepted {
+    /* Customize acceptance cell styles based on your preference */
+    color: #333; /* Example: Adjust text color */
+    font-weight: bold; /* Example: Set bold text */
+  }
+  
+  /* Style for the serial number column */
+  
+  #allproblems table th:first-child,
+  #allproblems table td:first-child {
+    text-align: center; /* Center serial numbers */
+    width: 30px; /* Adjust width as needed */
+  }
+  

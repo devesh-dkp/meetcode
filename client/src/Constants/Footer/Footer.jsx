@@ -6,7 +6,7 @@ function Footer() {
     <div id="footer">
       <div className="footer-main flex-row">
         <div className="footer-logo">
-          <p>MeetCode</p>
+          <p onClick={() => window.scrollTo(0, 0)}>MeetCode</p>
           <p>© 2023 All rights reserved</p>
         </div>
         <div className="footer-options">

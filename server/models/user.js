@@ -31,5 +31,4 @@ const USERS = [
     role: "user",
   },
 ];
-// how to export this USERS data to index.js
 module.exports = USERS;

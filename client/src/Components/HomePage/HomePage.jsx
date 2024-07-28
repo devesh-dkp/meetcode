@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./HomePage.css";
-import loremContent from "./LoremPosts";
+import posts from "./Posts";
 import Footer from "../../Constants/Footer/Footer";
 
 const HomePage = () => {
@@ -10,37 +12,45 @@ const HomePage = () => {
     setSelectedBlog(index);
   };
 
-  const handleCloseBlog = () => {
-    setSelectedBlog(null);
+  const handleCloseBlog = (e) => {
+    if (e.target.classList.contains("overlay")) {
+      setSelectedBlog(null);
+    }
   };
 
   return (
-    <div id="home">
-      <h1 className="flex-row">Blogs</h1>
-      <div className="blog-container">
-        {loremContent.map((content, index) => (
-          <div
-            key={`blog-${index}`}
-            className="blog-box"
-            onClick={() => handleBlogClick(index)}
-          >
-            <p className="date">{content.date}</p>
-            <h4 className="title">{content.title}</h4>
-            <p className="content">{content.content}</p>
-          </div>
-        ))}
-      </div>
-      {selectedBlog !== null && (
-        <div className="overlay" onClick={handleCloseBlog}>
-          <div className="zoomed-blog">
-            <p className="date">{loremContent[selectedBlog].date}</p>
-            <h4 className="title">{loremContent[selectedBlog].title}</h4>
-            <p className="content">{loremContent[selectedBlog].content}</p>
-          </div>
+    <>
+      <div id="home">
+        <div className="blog-container">
+          {posts.map((content, index) => (
+            <div
+              key={`blog-${index}`}
+              className="blog-box"
+              onClick={() => handleBlogClick(index)}
+            >
+              <p className="date">{content.date}</p>
+              <h4 className="title">{content.title}</h4>
+              <p className="content">{content.content.slice(0, 200)}...</p>
+            </div>
+          ))}
         </div>
-      )}
+        {selectedBlog !== null && (
+          <div className="overlay" onClick={handleCloseBlog}>
+            <div className="zoomed-blog">
+              <p className="date">{posts[selectedBlog].date}</p>
+              <h1 className="title">{posts[selectedBlog].title}</h1>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                className="react-markdown"
+              >
+                {posts[selectedBlog].content}
+              </ReactMarkdown>
+            </div>
+          </div>
+        )}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

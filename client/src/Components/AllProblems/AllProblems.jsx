@@ -21,34 +21,38 @@ const AllProblemsPage = () => {
   }, []);
 
   return (
-    <div id="allproblems">
-      <table>
-        <tbody>
-          <tr>
-            <th>Title</th>
-            <th>Difficulty</th>
-            <th>Acceptance</th>
-          </tr>
-
-          {problems.map((prob, index) => (
-            <tr key={index}>
-              <td
-                className="title"
-                onClick={() => {
-                  window.location.href = `/problems/:${prob.problemId}`;
-                }}
-              >
-                {prob.title}
-              </td>
-              {/* </Link> */}
-              <td className={`${prob.difficulty}`}>{prob.difficulty}</td>
-              <td className={`${prob.acceptance}`}>{prob.acceptance}</td>
+    <>
+      <div id="allproblems">
+        <table>
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Difficulty</th>
+              <th>Acceptance</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+
+            {problems.map((prob, index) => (
+              <tr key={index}>
+                <td className={`${prob.problemId}`}>{prob.problemId}</td>
+                <td
+                  className="title"
+                  onClick={() => {
+                    window.location.href = `/problems/:${prob.problemId}`;
+                  }}
+                >
+                  {prob.title}
+                </td>
+                {/* </Link> */}
+                <td className={`${prob.difficulty}`}>{prob.difficulty}</td>
+                <td className={`${prob.acceptance}`}>{prob.acceptance}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
