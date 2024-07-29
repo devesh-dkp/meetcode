@@ -2,50 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import { Flex, Text, Button } from "@chakra-ui/react";
-
 import "./Navbar.css";
-
-// const Navbar = () => {
-//   const [loggedIn, setLoggedIn] = useState(false);
-
-//   useEffect(() => {
-//     if (localStorage.getItem("token")) {
-//       setLoggedIn(true);
-//     }
-//   }, []);
-//   return (
-//     <div id="navbar-main" className="flex-row">
-//       <Link to={"/"}>
-//         <div className="logo-box flex-row">
-//           <img
-//             className="logo"
-//             src="https://user-images.githubusercontent.com/63964149/152531278-5e01909d-0c2e-412a-8acc-4a06863c244d.png"
-//             alt="logo"
-//           />
-//           <p>MeetCode</p>
-//         </div>
-//       </Link>
-//       <div className="nav-options">
-//         <Link to={"/problemset/all/"}>Problems</Link>
-//       </div>
-//       <div className="nav-options">
-//         <Link to={"/users"}>Users</Link>
-//       </div>
-//       {/* <div className="nav-options">
-//         <Link to={"/signup"}>Signup</Link>
-//       </div> */}
-//       {loggedIn ? (
-//         <div className="nav-options login">
-//           <Link to={"/me"}>Profile</Link>
-//         </div>
-//       ) : (
-//         <div className="nav-options login">
-//           <Link to={"/login"}>Login</Link>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -71,75 +28,60 @@ const Navbar = () => {
     >
       <Flex
         flexDirection="row"
-        width="1100px"
         justifyContent="space-between"
         alignItems="center"
+        width="74%"
       >
         <Flex p={1}>
           <Link to={"/"}>
             <Flex flexDirection="row" alignItems="center">
               <img
                 className="logo"
-                src="https://user-images.githubusercontent.com/63964149/152531278-5e01909d-0c2e-412a-8acc-4a06863c244d.png"
+                src="https://as2.ftcdn.net/jpg/01/97/70/75/480_F_197707519_OxI29fnD4mDRGO0EQdnoAJGTtzlvjaly.png?token=1723475624_09JHL8XrhoNbwwJbrMe96qFz8IyX4yzyOr-7BWFurDM"
                 alt="logo"
               />
               <Text>MeetCode</Text>
             </Flex>
           </Link>
         </Flex>
-        <Flex>
+        <Flex
+          flexDirection="row"
+          alignItems="center"
+          fontFamily={"sans-serif"}
+          textDecorationLine={"underline"}
+        >
           {loggedIn ? (
             <Link to={"/me"}>
-              <Button
-                color={"black"}
-                backgroundColor="white"
-                fontSize={16}
-                mt={0}
-                mr={0}
-              >
+              <div color={"black"} fontSize={16}>
                 Profile
-              </Button>
+              </div>
             </Link>
           ) : (
             <Link to={"/login"}>
-              <Button
-                color={"black"}
-                fontSize={16}
-                backgroundColor="white"
-                mt={0}
-                mr={0}
-              >
+              <Text color={"black"} fontSize={16}>
                 Login
-              </Button>
+              </Text>
             </Link>
           )}
           <div className="vertical-line"></div>
           {loggedIn ? (
             <Link to={"/"}>
-              <Button
+              <div
                 color={"black"}
-                backgroundColor="white"
                 fontSize={16}
-                mt={0}
                 onClick={() => {
                   handleLogout();
                 }}
                 ml={0}
               >
                 Logout
-              </Button>
+              </div>
             </Link>
           ) : (
             <Link to={"/signup"}>
-              <Button
-                color={"black"}
-                fontSize={16}
-                backgroundColor="white"
-                mt={0}
-                ml={0}
-              >
+              <Text color={"black"} fontSize={16}>
                 Signup
-              </Button>
+              </Text>
             </Link>
           )}
         </Flex>

@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; /* Center the footer content */
+  margin: 0 auto; 
 }
 
 .footer-logo,
@@ -33,7 +33,7 @@
 
 .footer-logo p {
   font-size: 16px;
-  font-weight: lighter;
+  font-weight:semi-bold;
   margin: 0; /* Remove margin */
 }
 

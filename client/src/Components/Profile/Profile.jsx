@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Profile.css";
+import { Text, Flex } from "@chakra-ui/react";
 import Footer from "../../Constants/Footer/Footer.jsx";
 import { backendUrl } from "../../constants.js";
-import { Link } from "react-router-dom";
+
 function Profile() {
   const [user, setUser] = useState({});
 
@@ -32,39 +32,43 @@ function Profile() {
     init();
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    window.location.replace("/login");
-  };
-
   return (
     <div>
-      <div className="profile-container">
-        {user ? (
-          <div className="profile">
-            <div className="user-account">
-              <h1>Profile</h1>
-              <div>
-                <p>Username: {user.username}</p>
-                <p>Email: {user.email}</p>
-              </div>
-              <button onClick={handleLogout}>Logout</button>
-            </div>
-            <div className="other-account">
-              <p>Other Account</p>
-              <button onClick={handleLogout}>Login</button>
-            </div>
-          </div>
-        ) : (
-          <>
-            <h1>Not logged in</h1>
-            <button>
-              <Link to={"/login"}>Login</Link>
-            </button>
-          </>
-        )}
-      </div>
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        padding={5}
+        margin={5}
+        marginTop={10}
+        border={"1px solid #CBD5E0"}
+        borderRadius={5}
+        width={["90%", "80%", "40%", "60%"]}
+        align={"center"}
+        marginX="auto"
+      >
+        <Text fontSize="3xl">Profile</Text>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          margin="auto"
+          marginTop={0}
+        >
+          <Flex
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            margin="auto"
+            marginTop={0}
+          >
+            <Text fontSize="xl">Username: {user.username}</Text>
+            <Text fontSize="xl">Email: {user.email}</Text>
+            <Text fontSize="xl">Role: {user.role}</Text>
+          </Flex>
+        </Flex>
+      </Flex>
+
       <Footer />
     </div>
   );

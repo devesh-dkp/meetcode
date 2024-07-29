@@ -4,23 +4,24 @@
 #navbar-main {
     display: flex;
     border:  1px solid #e0e0e0;
-    width: 1100px;
     border-radius: 5px;
     margin-top: 1rem;
     padding: 0.2rem;
     justify-content: left;
     align-items: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 74%;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    justify-content: left;
-    margin-right: 1rem;
+    width : 3rem;
+    height : 3rem;
+    margin : 0.1rem 1rem;
 }
 
 .vertical-line {
     border-left: 2px solid black;
-    height: 1.2rem;
-    margin: 0.7rem 0.2rem;
+    height: 0.8rem;
+    margin: 0.7rem 0.4rem;
 }

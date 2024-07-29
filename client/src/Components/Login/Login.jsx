@@ -9,6 +9,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const showPassword = () => {
+    const passwordInput = document.getElementsByName("password")[0];
+    passwordInput.type =
+      passwordInput.type === "password" ? "text" : "password";
+  };
+
   // Login function in your React component
   const handleLogin = async () => {
     const response = await fetch(`${backendUrl}/login`, {
@@ -78,7 +84,7 @@ const Login = () => {
             Password:
             <input
               onChange={(e) => setPassword(e.target.value)}
-              type="text"
+              type="password"
               name="password"
               placeholder="Your Password"
               onKeyDown={(e) => {
@@ -88,14 +94,13 @@ const Login = () => {
               }}
             />
           </label>
+          <div className="show-password">
+            <input type="checkbox" id="show-password" onClick={showPassword} />
+            <label htmlFor="show-password">Show Password</label>
+          </div>
         </div>
 
-        <button
-          type="submit"
-          id="test"
-          onClick={handleLogin}
-          className="login-button"
-        >
+        <button type="submit" className="login-button" onClick={handleLogin}>
           Login
         </button>
         <div className="signup-link">

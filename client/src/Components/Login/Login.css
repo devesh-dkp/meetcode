@@ -1,13 +1,15 @@
 #login {
-    display: flex; /* Center content vertically */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    padding: 20px;
-    border-radius: 5px; /* Add a subtle rounded corner */
-    background-color: #fff; /* Light background */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
-    max-width: 400px; /* Limit width for larger screens */
-    margin: 50px auto; /* Center the form vertically */
+  padding: 50px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width:25rem;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 50px auto; /* Center the form vertically */
+  border: 1px solid #ccc;
   }
   
   h1 {
@@ -40,17 +42,18 @@
   }
   
   .login-button {
-    background-color: #3498db; /* Blue button */
-    color: #fff; /* White text */
+    background-color: white;
+    color: #333; 
     padding: 10px 15px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 3px;
-    cursor: pointer; /* Indicate clickable element */
+    cursor: pointer; 
     margin-top: 15px;
+    font-size: 18px;
   }
   
   .login-button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #f9f9f9; 
   }
   
   .signup-link {
@@ -71,6 +74,20 @@
   .signup-link a:hover {
     text-decoration: underline;
   }
+  .show-password {
+    margin-top: 5px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    input {
+      margin-right: 5px;
+    }
+
+    label {
+      margin-bottom: 0;
+      font: 14px Arial, sans-serif;
+    }
+  }
   
   /* Media Queries for Mobile Responsiveness (up to 768px) */
   @media (max-width: 768px) {
@@ -83,7 +100,7 @@
     }
   
     .login-button {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   

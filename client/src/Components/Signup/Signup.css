@@ -1,11 +1,8 @@
 #signup {
-    padding-right: 55px;
-    padding-left: 35px;
-    padding-top: 35px;
-    padding-bottom: 55px;
+    padding: 50px;
     background-color: #f9f9f9;
     border-radius: 5px;
-    width: 400px;
+    width:25rem;
     margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
     display: flex;
@@ -47,23 +44,38 @@
     }
   
   .signup-button { /* Renamed for clarity */
-    background-color: #3498db; /* Blue button */
-    color: #fff; /* White text */
+    background-color: white; /* White background */
+    color: #333; 
     padding: 10px 15px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 3px;
     cursor: pointer; /* Indicate clickable element */
     margin-top: 15px;
   }
   
   .signup-button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #f9f9f9; /* Light grey background on hover */
   }
   
+  .show-password {
+    margin-top: 5px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    input {
+      margin-right: 5px;
+    }
+
+    label {
+      margin-bottom: 0;
+      font: 14px Arial, sans-serif;
+    }
+  }
   /* Media Queries for Mobile Responsiveness (up to 768px) */
   @media (max-width: 768px) {
     #signup {
       padding: 15px;
+      width: 70%;
     }
   
     input[type="text"],

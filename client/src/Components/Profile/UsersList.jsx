@@ -49,7 +49,7 @@ function UsersList() {
     });
   };
   return (
-    <div>
+    <div className="users-list-container">
       <h1>Users List</h1>
       <ul className="users-list">
         <li className="header">
