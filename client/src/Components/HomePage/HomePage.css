@@ -28,7 +28,6 @@
   .title {
     font-size: 1.2rem;
     margin: 10px 0;
-    color: #333;
   }
   
   .content {
@@ -52,7 +51,7 @@
   }
   
   .zoomed-blog {
-    background: #fff;
+    background-color: #bbbec2;
     border-radius: 10px;
     padding: 30px;
     max-width: 90%;
@@ -60,21 +59,15 @@
     overflow-y: auto;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     z-index: 1001;
+    .title {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
   } 
 
   .react-markdown {
     font-size: 1rem;
     line-height: 1.6;
-    color: #333;
-  }
-  
-  .react-markdown h1,
-  .react-markdown h2,
-  .react-markdown h3,
-  .react-markdown h4,
-  .react-markdown h5,
-  .react-markdown h6 {
-    margin-top: 1.5rem;
   }
   
   .react-markdown p {
@@ -92,7 +85,6 @@
   
   .react-markdown blockquote {
     padding: 0.5rem 1rem;
-    background: black;
     border-left: 4px solid #ccc;
   }
   
@@ -106,7 +98,6 @@
   }
   
   .react-markdown pre {
-    background: #f0f0f0;
     padding: 1rem;
     border-radius: 4px;
     overflow-x: auto;

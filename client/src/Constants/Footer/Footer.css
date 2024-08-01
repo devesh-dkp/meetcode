@@ -2,17 +2,15 @@
 #footer {
   border-top: 1px solid rgb(77, 76, 76);
   width: 100%;
-  color: #333; /* Dark text color */
-  padding: 20px 0;
-  margin-top: 5rem;
   justify-content: space-between;
+  padding: 20px 0;
+  margin-top: 3rem;
 }
 
 .footer-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; 
 }
 
 .footer-logo,
@@ -34,11 +32,9 @@
 .footer-logo p {
   font-size: 16px;
   font-weight:semi-bold;
-  margin: 0; /* Remove margin */
 }
 
 .footer-options a {
-  color: #333; /* Darker text color */
   text-decoration: none; /* Remove underline */
   margin-left: 10px; /* Add space between links */
   font-size: 16px; /* Set font size */

@@ -1,34 +1,19 @@
-const USERS = [
-  // Example user
-  {
-    email: "admin@example.com",
-    password: "adminpass",
-    username: "admin",
-    id: 0,
-    role: "admin",
-  },
+const mysql = require("mysql");
+require("dotenv").config();
 
-  // Example user
-  {
-    email: "mk@mk.mk",
-    password: "mkpass",
-    username: "mk",
-    id: 1,
-    role: "user",
-  },
-  {
-    email: "dj",
-    password: "djpass",
-    username: "dj",
-    id: 2,
-    role: "user",
-  },
-  {
-    email: "mike",
-    password: "mikepass",
-    username: "mike",
-    id: 3,
-    role: "user",
-  },
-];
-module.exports = USERS;
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: process.env.DB_PASSWORD,
+  database: "Meetcode",
+});
+
+db.connect((err) => {
+  if (err) {
+    console.log("Database connection error:", err);
+  } else {
+    console.log("Connected to database");
+  }
+});
+
+module.exports = db;

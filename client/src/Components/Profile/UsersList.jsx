@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./UsersList.css";
+import axios from "axios";
 import { backendUrl } from "../../constants.js";
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -34,22 +35,23 @@ function UsersList() {
     fetchUsers();
   }, []);
   const handleDeleteUser = (userId) => {
-    const token = localStorage.getItem("token");
-    fetch(`${backendUrl}/user/${userId}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((response) => {
-      if (response.ok) {
-        setUsers(users.filter((user) => user.id !== userId));
-      } else {
-        console.log("Error deleting user");
-      }
-    });
+    axios
+      .delete(`${backendUrl}/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((resp) => {
+        if (resp.status === 200) {
+          setUsers(users.filter((user) => user.id !== userId));
+        }
+      })
+      .catch((err) => {
+        console.log("Error deleting user", err);
+      });
   };
   return (
-    <div className="users-list-container">
+    <>
       <h1>Users List</h1>
       <ul className="users-list">
         <li className="header">
@@ -61,7 +63,7 @@ function UsersList() {
           </div>
         </li>
         {users.map((user) => (
-          <li key={user.id} className="user">
+          <li key={user.id} className="user list">
             <div>{user.username}</div>
             <div>{user.email}</div>
             <div>{user.role}</div>
@@ -69,7 +71,7 @@ function UsersList() {
               <div className="action">
                 {user.role !== "admin" && (
                   <button onClick={() => handleDeleteUser(user.id)}>
-                    Delete
+                    {`Delete ${user.id}`}
                   </button>
                 )}
               </div>
@@ -77,7 +79,7 @@ function UsersList() {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 

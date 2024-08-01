@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Text, Flex } from "@chakra-ui/react";
-import Footer from "../../Constants/Footer/Footer.jsx";
 import { backendUrl } from "../../constants.js";
 
 function Profile() {
@@ -68,8 +67,6 @@ function Profile() {
           </Flex>
         </Flex>
       </Flex>
-
-      <Footer />
     </div>
   );
 }

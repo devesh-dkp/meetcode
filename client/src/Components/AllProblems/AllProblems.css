@@ -14,13 +14,13 @@
   
   #allproblems table {
     width: 100%;
-    border-collapse: collapse; /* Remove borders between cells for a cleaner look */
+    border-collapse: collapse; 
   }
   
   #allproblems table th,
   #allproblems table td {
-    padding: 15px; /* Consistent padding for readability */
-    text-align: left; /* Align content to the left (default) */
+    padding: 15px;
+    text-align: left; 
   }
   
   #allproblems table th {
@@ -28,7 +28,7 @@
   }
   
   #allproblems table tr:nth-child(even) {
-    background-color: #eee; /* Alternate row colors for better readability */
+    background-color: gainsboro; /* Alternate row color */
   }
   
   .title {
@@ -42,15 +42,11 @@
   .Easy,
   .Medium,
   .Hard {
-    /* Customize difficulty cell styles based on your preference */
-    color: #333; /* Example: Adjust text color */
     font-weight: bold; /* Example: Set bold text */
   }
   
   .Accepted,
   .Partially Accepted {
-    /* Customize acceptance cell styles based on your preference */
-    color: #333; /* Example: Adjust text color */
     font-weight: bold; /* Example: Set bold text */
   }
   

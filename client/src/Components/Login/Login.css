@@ -1,9 +1,8 @@
 #login {
   padding: 50px;
-  background-color: #f9f9f9;
   border-radius: 5px;
   width:25rem;
-  margin: 0 auto;
+  margin:1rem 1rem 1rem 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
   display: flex;
   flex-direction: column;
@@ -42,8 +41,6 @@
   }
   
   .login-button {
-    background-color: white;
-    color: #333; 
     padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
