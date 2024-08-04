@@ -1,5 +1,5 @@
 ## MeetCode
-This repository contains the code for a coding problem-solving site model. The site has a frontend (in client folder) and a backend server (in server folder).
+This repository contains the code for the MeetCode website. MeetCode is a platform where users can solve problems and submit their solutions.
 
 ## Installation
 - Clone the repository
