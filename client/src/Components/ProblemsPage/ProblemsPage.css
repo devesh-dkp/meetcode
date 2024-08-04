@@ -6,6 +6,16 @@
     flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
+    font-weight: lighter;
+}
+
+.title {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 #problempage {
@@ -39,6 +49,7 @@
 .run-button {
     margin-top: 2rem;
     display: flex;
+    background-color: #b84dba;
 }
 
 .output {
@@ -51,11 +62,17 @@
     padding: 0.5rem;
     justify-content:center;
     flex-wrap: wrap;
-
-    h2 {
-        margin-right: 1rem;
-    }
+    background-color: #b84dba;
 }
+.output h2 {
+        margin-right: 1rem;
+        font-size: large;
+        font-weight: bold;
+    }
+ .output div {
+        margin: 0.3rem;
+        font-weight: bolder;
+    }
 
 @media screen and (max-width: 768px) {
     .run-button {

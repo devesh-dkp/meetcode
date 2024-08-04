@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import "./AllProblems.css";
 import { backendUrl } from "../../constants.js";
-import Footer from "../../Constants/Footer/Footer.jsx";
 
 const AllProblemsPage = () => {
   const [problems, setProblems] = useState([]);
@@ -35,7 +34,7 @@ const AllProblemsPage = () => {
             <tr key={index}>
               <td className={`${prob.problemId}`}>{prob.problemId}</td>
               <td
-                className="title"
+                className="problem-title"
                 onClick={() => {
                   window.location.href = `/problems/:${prob.problemId}`;
                 }}

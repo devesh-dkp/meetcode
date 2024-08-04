@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import Reactmarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./ProblemsPage.css";
 import { backendUrl } from "../../constants.js";
 import { Box, HStack, Button, useToast } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
-import { CODE_SNIPPETS } from "../../constants";
-
+import { CODE_SNIPPETS, LANGAUGE_IDS } from "../../constants";
 const ProblemsPage = () => {
   const toast = useToast();
   const editorRef = useRef();
@@ -14,7 +15,7 @@ const ProblemsPage = () => {
   const cleanId = pid.substring(1);
   const [problem, setProblem] = useState(null);
   const [loading, setLoading] = useState(0);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("Run the code to see the output");
   const [language, setLanguage] = useState("cpp");
   const [value, setValue] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -50,48 +51,52 @@ const ProblemsPage = () => {
 
   const handleSubmission = async () => {
     const sourceCode = editorRef.current.getValue();
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      toast({
+        title: "Please login to submit the code",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      setIsLoading(false);
+      return;
+    }
     if (!sourceCode) return;
     setIsLoading(true);
-    const response = await fetch(`${backendUrl}/submission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        problemId: cleanId,
-        submission: sourceCode,
-      }),
-    });
-
-    const json = await response.json();
-    console.log(json);
-    setIsLoading(false);
-    if (response.ok) {
-      const st = json.status;
-      if (st == "AC") {
-        setResult("Accepted");
-      } else if (st == "WA") {
-        setResult("Wrong Answer");
-      } else if (st == "TLE") {
-        setResult("Time Limit Exceeded");
-      } else if (st == "MLE") {
-        setResult("Memory Limit Exceeded");
-      } else if (st == "RE") {
-        setResult("Runtime Error");
-      } else if (st == "CE") {
-        setResult("Compilation Error");
-      } else {
-        setResult("Error");
-      }
-    } else {
-      setResult("Error");
-
+    try {
+      const response = await fetch(`${backendUrl}/submission`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          languageId: LANGAUGE_IDS[language],
+          sourceCode: sourceCode,
+          problemId: cleanId,
+        }),
+      });
+      const json = await response.json();
+      const status = json.status;
+      setResult(status);
+      setIsLoading(false);
+      toast({
+        title: "Code submitted successfully",
+        description: status,
+        status: (status === "Accepted" && "success") || "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch (err) {
+      setIsLoading(false);
       toast({
         title: "An error occurred.",
-        description: json.message || "Unable to submit code",
+        description: "Please try again later",
         status: "error",
-        duration: 6000,
+        duration: 9000,
+        isClosable: true,
       });
     }
   };
@@ -101,11 +106,23 @@ const ProblemsPage = () => {
       {problem ? (
         <div id="problempage" className="flex-row">
           <div className="ques">
-            <h1>{problem.title}</h1>
-            <h5>Description</h5>
-            <p>{problem.description}</p>
-            <code>Input : {problem.exampleIn}</code>
-            <code>Output : {problem.exampleOut}</code>
+            <h1 className="title">{problem.title}</h1>
+            <h2 className="bold">Description</h2>
+            <Reactmarkdown remarkPlugins={[remarkGfm]}>
+              {problem.description}
+            </Reactmarkdown>
+            <h2 className="bold">
+              First line of input contains a single integer t, the number of
+              test cases.
+            </h2>
+            <h2 className="bold">Input</h2>
+            <Reactmarkdown remarkPlugins={[remarkGfm]}>
+              {problem.exampleIn}
+            </Reactmarkdown>
+            <h2 className="bold">Output</h2>
+            <Reactmarkdown remarkPlugins={[remarkGfm]}>
+              {problem.exampleOut}
+            </Reactmarkdown>
           </div>
           <div className="code">
             <Box p={4}>
@@ -120,7 +137,8 @@ const ProblemsPage = () => {
                     </div>
                     <Button
                       variant="outline"
-                      colorScheme="green"
+                      colorScheme="teal"
+                      bg={"green.100"}
                       isLoading={isLoading}
                       onClick={handleSubmission}
                       className="run-button"
@@ -148,7 +166,7 @@ const ProblemsPage = () => {
             </Box>
             <div className="output">
               <h2>Output:</h2>
-              <p>{result}</p>
+              <div>{result}</div>
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ app.use("/api", problemsRouter);
 app.use("/api", usersRouter);
 
 app.use("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.listen(port, () => {

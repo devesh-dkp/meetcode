@@ -19,24 +19,24 @@
   
   #allproblems table th,
   #allproblems table td {
-    padding: 15px;
+    padding: 10px;
     text-align: left; 
   }
   
   #allproblems table th {
-    font-weight: bold; /* Bold text for emphasis */
+    font-weight: light;
   }
   
   #allproblems table tr:nth-child(even) {
     background-color: gainsboro; /* Alternate row color */
   }
   
-  .title {
-    cursor: pointer; /* Indicate clickable titles with cursor change */
+  .problem-title{
+    cursor: pointer; 
   }
   
-  .title:hover {
-    color: #007bff; /* Change title color on hover (optional) */
+  .problem-title:hover {
+    color: #007bff; 
   }
   
   .Easy,
@@ -49,8 +49,6 @@
   .Partially Accepted {
     font-weight: bold; /* Example: Set bold text */
   }
-  
-  /* Style for the serial number column */
   
   #allproblems table th:first-child,
   #allproblems table td:first-child {

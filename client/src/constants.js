@@ -1,10 +1,17 @@
 export const backendUrl = "http://localhost:3000/api";
 
 export const LANGUAGE_VERSIONS = {
-  cpp: "17.17.0",
-  javascript: "18.15.0",
-  python: "3.10.0",
-  java: "15.0.2",
+  cpp: "GCC 9.2.0",
+  javascript: "Node.js 18.15.0",
+  python: "3.11.2",
+  java: "JDK 17.0.6",
+};
+
+export const LANGAUGE_IDS = {
+  cpp: 54,
+  javascript: 93,
+  python: 92,
+  java: 91,
 };
 
 export const CODE_SNIPPETS = {

@@ -76,15 +76,15 @@
     flex-wrap: wrap;
     display: flex;
     align-items: center;
-    input {
+  }
+  .show-password input[type="checkbox"] {
       margin-right: 5px;
     }
 
-    label {
+  .show-password label {
       margin-bottom: 0;
       font: 14px Arial, sans-serif;
     }
-  }
   
   /* Media Queries for Mobile Responsiveness (up to 768px) */
   @media (max-width: 768px) {
