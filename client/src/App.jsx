@@ -10,6 +10,7 @@ import "./App.css";
 import Profile from "./Components/Profile/Profile";
 import UsersList from "./Components/Profile/UsersList";
 import Footer from "./Constants/Footer/Footer";
+import Discussion from "./Components/DiscussionForum/Discussion";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -57,6 +58,7 @@ function App() {
           <Route path="/problems/:pid/" element={<ProblemsPage />} />
           <Route path="/me" element={loggedIn ? <Profile /> : <Login />} />
           <Route path="/users" element={<UsersList />} />
+          <Route path="/discuss" element={<Discussion />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </BrowserRouter>

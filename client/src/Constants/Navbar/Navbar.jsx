@@ -47,7 +47,7 @@ const Navbar = () => {
             <Flex flexDirection="row" alignItems="center">
               <img
                 className="logo"
-                src="https://as2.ftcdn.net/jpg/01/97/70/75/480_F_197707519_OxI29fnD4mDRGO0EQdnoAJGTtzlvjaly.png?token=1723475624_09JHL8XrhoNbwwJbrMe96qFz8IyX4yzyOr-7BWFurDM"
+                src="https://logo.clearbit.com/meetcode.com"
                 alt="logo"
               />
               <Text>MeetCode</Text>
@@ -115,6 +115,9 @@ const Navbar = () => {
         </div>
         <div className="nav-options">
           <Link to={"/users"}>Users</Link>
+        </div>
+        <div className="nav-options">
+          <Link to={"/discuss"}>Discuss</Link>
         </div>
       </div>
     </Flex>
